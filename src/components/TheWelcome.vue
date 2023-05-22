@@ -5,13 +5,15 @@
       <div class="modal-container lp">
         <div class="header-container d-flex ly-spacebetween-start">
           <h4>Supermarket Survey!</h4>
-          <img @click="closeModal" alt="close" class="close-btn" src="./assets/close.svg" width="125" height="125"/>
+          <div @click="closeModal" class="close"></div>
         </div>
 
-          <div class="ly-even-2 form-container">
+        <div class="ly-even-2 form-container">
           <div class="input-item custom-select">
             <div class="input-name">Select a Fruit</div>
-            <div class="selected-option" @click="toggleDropdown">{{ selectedOption }}</div>
+            <div class="selected-option" @click="toggleDropdown">{{ selectedOption }}
+              <i class="arrow-icon" :class="{ 'arrow-up': showOptions }"></i>
+            </div>
             <div class="options" v-if="showDropdown">
               <div
                   class="option"
@@ -25,15 +27,15 @@
           </div>
           <div class="input-item search-select">
             <div class="input-name">Select a Food Item</div>
-            <SelectedFilter search-field-text="Filter options" />
+            <SelectedFilter search-field-text="Filter options"/>
           </div>
           <div class="input-item count-input">
             <div class="input-name">Favorite Food</div>
             <input v-model="inputText" @input="updateLetterCount" type="text" placeholder="E.g. Pizza">
-            <p>{{ letterCount }}/80</p>
+            <p class="count-item">{{ letterCount }}/80</p>
           </div>
           <div class="input-item number-input">
-            <NumberInput v-model="numberValue" format="currency" :maxValue="100" label="Food Budget" />
+            <NumberInput v-model="numberValue" format="currency" :maxValue="100" label="Food Budget"/>
           </div>
         </div>
         <div class="action-buttons">
@@ -63,10 +65,10 @@ export default defineComponent({
       selectedOption: 'Select Option',
       showDropdown: false,
       options: [
-        { value: 'option1', label: 'Watermelon' },
-        { value: 'option2', label: 'Orange' },
-        { value: 'option3', label: 'Banana' },
-        { value: 'option3', label: 'Kiwi' }
+        {value: 'option1', label: 'Watermelon'},
+        {value: 'option2', label: 'Orange'},
+        {value: 'option3', label: 'Banana'},
+        {value: 'option3', label: 'Kiwi'}
       ],
       inputText: '',
       letterCount: 0
