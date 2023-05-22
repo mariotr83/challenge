@@ -1,6 +1,8 @@
 <template>
   <div>
-    <button @click="openModal">Open Modal</button>
+    <div class="open-modal-button lp">
+      <button @click="openModal">Open Modal</button>
+    </div>
     <div v-if="showModal" class="modal">
       <div class="modal-container lp">
         <div class="header-container d-flex ly-spacebetween-start">
